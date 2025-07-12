@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Feedback</title>
+  <!-- Link to your CSS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Tell Us How We Did 😊</h2>
+
+    <!-- The feedback form -->
+    <form id="feedback-form">
+      <label for="username">Name:</label>
+      <input type="text" id="username" name="username" placeholder="Enter your name">
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email">
+
+      <label for="comments">Comments:</label>
+      <textarea id="comments" name="comments" placeholder="In a few words, describe your experience with us..."></textarea>
+
+      <!-- Real-time character count -->
+      <p id="char-count">Characters: 0</p>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <!-- Where the submitted feedback will show -->
+    <div id="feedback-display"></div>
+  </div>
+
+  <!-- Link to your JavaScript file -->
+  <script src="cp_1.js"></script>
+</body>
+</html>
