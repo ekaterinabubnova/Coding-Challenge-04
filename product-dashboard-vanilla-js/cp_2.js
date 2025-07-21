@@ -1,0 +1,57 @@
+function fetchProductsThen() {
+  fetch('https://www.course-api.com/javascript-store-products')
+    .then(response => response.json())
+    .then(products => {
+      products.forEach(product => {
+        console.log(product.fields.name);
+      });
+    })
+    .catch(error => {
+      console.error('Error using .then():', error);
+    });
+}
+
+async function fetchProductsAsync() {
+  try {
+    const response = await fetch('https://www.course-api.com/javascript-store-products');
+    const products = await response.json();
+    displayProducts(products);
+  } catch (error) {
+    handleError(error);
+  }
+}
+
+function displayProducts(products) {
+  const container = document.getElementById('product-container');
+  const topFive = products.slice(0, 5);
+
+  topFive.forEach(product => {
+    const { name, price, image } = product.fields;
+
+    const card = document.createElement('div');
+    card.className = 'product-card';
+
+    const img = document.createElement('img');
+    img.src = image[0].url;
+    img.alt = name;
+
+    const title = document.createElement('h3');
+    title.textContent = name;
+
+    const priceTag = document.createElement('p');
+    priceTag.textContent = `$${(price / 100).toFixed(2)}`;
+
+    card.appendChild(img);
+    card.appendChild(title);
+    card.appendChild(priceTag);
+
+    container.appendChild(card);
+  });
+}
+
+function handleError(error) {
+  console.error('An error occurred:', error.message);
+}
+
+fetchProductsThen();
+fetchProductsAsync();
